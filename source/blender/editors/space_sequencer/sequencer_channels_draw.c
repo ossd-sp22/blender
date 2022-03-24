@@ -180,7 +180,8 @@ static bool channel_is_being_renamed(SpaceSeq *sseq, int channel_index)
 
 static float text_size_get(SeqChannelDrawContext *context)
 {
-  return 20 * U.dpi_fac * context->scale;  // XXX
+  const uiStyle *style = UI_style_get_dpi();
+  return UI_fontstyle_height_max(&style->widget) * 1.5f * context->scale;
 }
 
 /* Todo: decide what gets priority - label or buttons */

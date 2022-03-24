@@ -325,7 +325,7 @@ static void do_versions_theme(const UserDef *userdef, bTheme *btheme)
     FROM_DEFAULT_V4_UCHAR(space_sequencer.mask);
   }
 
-  if (!USER_VERSION_ATLEAST(301, 5)) {
+  if (!USER_VERSION_ATLEAST(302, 7)) {
     FROM_DEFAULT_V4_UCHAR(space_sequencer.list);
     FROM_DEFAULT_V4_UCHAR(space_sequencer.list_title);
     FROM_DEFAULT_V4_UCHAR(space_sequencer.list_text);

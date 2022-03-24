@@ -2577,7 +2577,7 @@ void blo_do_versions_300(FileData *fd, Library *UNUSED(lib), Main *bmain)
     }
   }
 
-  if (!MAIN_VERSION_ATLEAST(bmain, 302, 6)) {
+  if (!MAIN_VERSION_ATLEAST(bmain, 302, 7)) {
     /* Sequencer channels region. */
     for (bScreen *screen = bmain->screens.first; screen; screen = screen->id.next) {
       LISTBASE_FOREACH (ScrArea *, area, &screen->areabase) {
