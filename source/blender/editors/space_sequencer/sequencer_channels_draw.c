@@ -92,7 +92,7 @@ static void displayed_channel_range_get(SeqChannelDrawContext *context, int chan
   channel_range[1] = ceil(context->timeline_region_v2d->cur.ymax);
 
   rctf strip_boundbox;
-  BLI_rctf_init(&strip_boundbox, 0.0f, 0.0f, 1.0f, MAXSEQ);
+  BLI_rctf_init(&strip_boundbox, 0.0f, 0.0f, 1.0f, 7);
   SEQ_timeline_expand_boundbox(context->seqbase, &strip_boundbox);
   CLAMP(channel_range[0], strip_boundbox.ymin, strip_boundbox.ymax);
   CLAMP(channel_range[1], strip_boundbox.ymin, strip_boundbox.ymax);
