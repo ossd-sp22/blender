@@ -2603,6 +2603,8 @@ void blo_do_versions_300(FileData *fd, Library *UNUSED(lib), Main *bmain)
           ARegion *timeline_region = BKE_area_find_region_type(area, RGN_TYPE_WINDOW);
           if (timeline_region != NULL) {
             timeline_region->v2d.flag |= V2D_VIEWSYNC_AREA_VERTICAL;
+            timeline_region->v2d.cur.ymax = 8.5f;
+            timeline_region->v2d.align &= ~V2D_ALIGN_NO_NEG_Y;
           }
         }
       }

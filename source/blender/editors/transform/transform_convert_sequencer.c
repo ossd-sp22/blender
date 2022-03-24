@@ -750,6 +750,9 @@ static void flushTransSeq(TransInfo *t)
 {
   TransSeq *ts = (TransSeq *)TRANS_DATA_CONTAINER_FIRST_SINGLE(t)->custom.type.data;
   if (t->options & CTX_VIEW2D_EDGE_PAN) {
+    SpaceSeq *sseq = CTX_wm_space_seq(t->context);
+    sseq->flag |= SPACE_SEQ_CLAMP_SMOOTH;
+
     if (t->state == TRANS_CANCEL) {
       UI_view2d_edge_pan_cancel(t->context, &ts->edge_pan);
     }
