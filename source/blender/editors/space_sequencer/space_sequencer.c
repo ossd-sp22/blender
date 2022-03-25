@@ -136,6 +136,7 @@ static SpaceLink *sequencer_create(const ScrArea *UNUSED(area), const Scene *sce
   region->regiontype = RGN_TYPE_TOOLS;
   region->alignment = RGN_ALIGN_LEFT;
   region->flag = RGN_FLAG_HIDDEN;
+  region->v2d.flag |= V2D_VIEWSYNC_AREA_VERTICAL;
 
   /* Toolbar. */
   region = MEM_callocN(sizeof(ARegion), "channels for sequencer");
@@ -194,6 +195,7 @@ static SpaceLink *sequencer_create(const ScrArea *UNUSED(area), const Scene *sce
   region->v2d.scroll |= (V2D_SCROLL_RIGHT | V2D_SCROLL_VERTICAL_HANDLES);
   region->v2d.keepzoom = 0;
   region->v2d.keeptot = 0;
+  region->v2d.flag |= V2D_VIEWSYNC_AREA_VERTICAL;
 
   sseq->runtime.last_displayed_thumbnails = NULL;
 
