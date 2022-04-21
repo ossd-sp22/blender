@@ -3761,24 +3761,25 @@ static void ui_do_but_textedit(
           retval = WM_UI_HANDLER_BREAK;
         }
         break;
-      case EVT_RIGHTARROWKEY:
-        ui_textedit_move(but,
-                         data,
-                         STRCUR_DIR_NEXT,
-                         event->modifier & KM_SHIFT,
-                         (event->modifier & KM_CTRL) ? STRCUR_JUMP_DELIM : STRCUR_JUMP_NONE);
-        retval = WM_UI_HANDLER_BREAK;
-        break;
-      case EVT_LEFTARROWKEY:
-        ui_textedit_move(but,
-                         data,
-                         STRCUR_DIR_PREV,
-                         event->modifier & KM_SHIFT,
-                         (event->modifier & KM_CTRL) ? STRCUR_JUMP_DELIM : STRCUR_JUMP_NONE);
-        retval = WM_UI_HANDLER_BREAK;
-        break;
+      // case EVT_RIGHTARROWKEY:
+      //   ui_textedit_move(but,
+      //                    data,
+      //                    STRCUR_DIR_NEXT,
+      //                    event->modifier & KM_SHIFT,
+      //                    (event->modifier & KM_CTRL) ? STRCUR_JUMP_DELIM : STRCUR_JUMP_NONE);
+      //   retval = WM_UI_HANDLER_BREAK;
+      //   break;
+      // case EVT_LEFTARROWKEY:
+      //   ui_textedit_move(but,
+      //                    data,
+      //                    STRCUR_DIR_PREV,
+      //                    event->modifier & KM_SHIFT,
+      //                    (event->modifier & KM_CTRL) ? STRCUR_JUMP_DELIM : STRCUR_JUMP_NONE);
+      //   retval = WM_UI_HANDLER_BREAK;
+      //   break;
       case WHEELDOWNMOUSE:
       case EVT_DOWNARROWKEY:
+      case EVT_RIGHTARROWKEY:
         if (data->searchbox) {
 #ifdef USE_KEYNAV_LIMIT
           ui_mouse_motion_keynav_init(&data->searchbox_keynav_state, event);
@@ -3796,6 +3797,7 @@ static void ui_do_but_textedit(
         break;
       case WHEELUPMOUSE:
       case EVT_UPARROWKEY:
+      case EVT_LEFTARROWKEY:
         if (data->searchbox) {
 #ifdef USE_KEYNAV_LIMIT
           ui_mouse_motion_keynav_init(&data->searchbox_keynav_state, event);

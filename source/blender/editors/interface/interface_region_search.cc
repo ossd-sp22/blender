@@ -360,6 +360,14 @@ bool ui_searchbox_event(
       ui_searchbox_select(C, region, but, 1);
       handled = true;
       break;
+    case EVT_LEFTARROWKEY:
+      ui_searchbox_select(C, region, but, -11);
+      handled = true;
+      break;
+    case EVT_RIGHTARROWKEY:
+      ui_searchbox_select(C, region, but, 11);
+      handled = true;
+      break;
     case RIGHTMOUSE:
       if (val) {
         if (search_but->item_context_menu_fn) {
