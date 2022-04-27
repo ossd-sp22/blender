@@ -196,12 +196,21 @@ static void ui_searchbox_select(bContext *C, ARegion *region, uiBut *but, int st
   /* apply step */
   data->active += step;
 
+  int step_amt;
+  if (step < 0){
+    step_amt = -(step);
+  }
+  else if (step >= 0){
+    step_amt = step;
+  }
+
+
   if (data->items.totitem == 0) {
     data->active = -1;
   }
   else if (data->active >= data->items.totitem) {
     if (data->items.more) {
-      data->items.offset++;
+      data->items.offset += step_amt;
       data->active = data->items.totitem - 1;
       ui_searchbox_update(C, region, but, false);
     }
@@ -211,7 +220,7 @@ static void ui_searchbox_select(bContext *C, ARegion *region, uiBut *but, int st
   }
   else if (data->active < 0) {
     if (data->items.offset) {
-      data->items.offset--;
+      data->items.offset -= step_amt;
       data->active = 0;
       ui_searchbox_update(C, region, but, false);
     }
@@ -360,12 +369,12 @@ bool ui_searchbox_event(
       ui_searchbox_select(C, region, but, 1);
       handled = true;
       break;
-    case EVT_LEFTARROWKEY:
-      ui_searchbox_select(C, region, but, -11);
+    case EVT_PAGEUPKEY:
+      ui_searchbox_select(C, region, but, -9);
       handled = true;
       break;
-    case EVT_RIGHTARROWKEY:
-      ui_searchbox_select(C, region, but, 11);
+    case EVT_PAGEDOWNKEY:
+      ui_searchbox_select(C, region, but, 9);
       handled = true;
       break;
     case RIGHTMOUSE:
