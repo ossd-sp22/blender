@@ -3738,7 +3738,6 @@ static void ui_do_but_textedit(
   }
 
   if (event->val == KM_PRESS && !is_ime_composing) {
-    switch (event->type) {
       case EVT_VKEY:
       case EVT_XKEY:
       case EVT_CKEY:
