@@ -3738,6 +3738,7 @@ static void ui_do_but_textedit(
   }
 
   if (event->val == KM_PRESS && !is_ime_composing) {
+    switch (event->type) {
       case EVT_VKEY:
       case EVT_XKEY:
       case EVT_CKEY:
@@ -3917,7 +3918,7 @@ static void ui_do_but_textedit(
       }
     }
 
-    if ((event->ascii || event->utf8_buf[0]) && (retval == WM_UI_HANDLER_CONTINUE)
+    if ((event->ascii/* || event->utf8_buf[0]*/) && (retval == WM_UI_HANDLER_CONTINUE)
 #ifdef WITH_INPUT_IME
         && !is_ime_composing && (!WM_event_is_ime_switch(event) || !BLT_lang_is_ime_supported())
 #endif
