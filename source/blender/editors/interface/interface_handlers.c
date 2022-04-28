@@ -3918,7 +3918,11 @@ static void ui_do_but_textedit(
       }
     }
 
-    if ((event->ascii/* || event->utf8_buf[0]*/) && (retval == WM_UI_HANDLER_CONTINUE)
+#if defined(__APPLE__)
+    if ((event->ascii) && (retval == WM_UI_HANDLER_CONTINUE)
+#else
+    if ((event->ascii || event->utf8_buf[0]) && (retval == WM_UI_HANDLER_CONTINUE)
+#endif
 #ifdef WITH_INPUT_IME
         && !is_ime_composing && (!WM_event_is_ime_switch(event) || !BLT_lang_is_ime_supported())
 #endif
